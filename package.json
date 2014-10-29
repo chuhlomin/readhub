@@ -1,7 +1,7 @@
 {
-  "name": "dlib",
+  "name": "readhub",
   "version": "0.0.0",
-  "description": "dlib ====",
+  "description": "readhub ====",
   "main": "Gruntfile.js",
   "dependencies": {
     "grunt": "^0.4.5"
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git@bitbucket.org:chuhlomin/dlib.git"
+    "url": "git@bitbucket.org:readhub/readhub.git"
   },
   "author": "",
   "license": "MIT"
