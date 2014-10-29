@@ -1,8 +1,6 @@
 readhub
 =======
 
-Second iteration: Python, Flesk, ...
-
 Installation
 ------------
 
