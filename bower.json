@@ -1,0 +1,22 @@
+{
+  "name": "readhub",
+  "version": "0.0.0",
+  "homepage": "https://github.com/readhub/readhub",
+  "authors": [
+    "Konstantin Chukhlomin <chuhlomin@gmail.com>",
+    "Sergey Romanov <sromanov-dev@yandex.ru>",
+    "Pavel Grafov <pgrafov@gmail.com>"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "flat-ui": "2.2.*"
+  }
+}
