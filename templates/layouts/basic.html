@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>readhub - share your books!</title>
+<meta name="description" content="">
+<meta name="viewport" content="width=1000, initial-scale=1.0, maximum-scale=1.0">
+</head>
+<body data-twttr-rendered="true">
+<div class="container">
+    <div class="headline">
+        <h1 class="logo">
+            <a href="{{ url_for('landing') }}">read<span class="red">hub</span></a>
+            <small>share your books</small>
+        </h1>
+
+        <div class="panel-user">
+            <div class="btn-group">
+                <a class="btn btn-primary" href="{{ url_for('login') }}"><span class="fui-exit"></span> Login</a>
+                <a class="btn btn-primary" href="{{ url_for('register') }}">Register</a>
+            </div>
+        </div>
+    </div>
+    <!-- /headline -->
+
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
