@@ -33,6 +33,6 @@ Installation
     pip install -r requirements.txt
     
     export SETTINGS='config.Config'
-    python manage.py db init
+    python manage.py db upgrade
     
     sh run.sh
