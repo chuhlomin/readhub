@@ -14,9 +14,8 @@ if not app.debug:
 
 app.logger.info("\nConfiguration\n%s\n" % app.config)
 
-# if this app uses a db you'll need this
-# from flask.ext.sqlalchemy import SQLAlchemy
-# db = SQLAlchemy(app)
+from flask.ext.sqlalchemy import SQLAlchemy
+db = SQLAlchemy(app)
 
 # govuk_template asset path
 @app.context_processor
