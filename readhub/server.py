@@ -1,5 +1,6 @@
-from flask import render_template
+from flask import render_template, flash, redirect
 from readhub import app
+from forms import RegistrationForm
 
 # If using db, do something like this:
 # from appname import db
@@ -25,9 +26,15 @@ def book(id):
 def login():
     return render_template('account/login.html')
 
-@app.route('/register/')
+@app.route('/register/', methods=['GET', 'POST'])
 def register():
-    return render_template('account/register.html')
+    form = RegistrationForm()
+
+    if form.validate_on_submit():
+        flash('Account created!')
+        return redirect('/')
+
+    return render_template('account/register.html', form=form)
 
 #  Some useful headers to set to beef up the robustness of the app
 # https://www.owasp.org/index.php/List_of_useful_HTTP_headers
