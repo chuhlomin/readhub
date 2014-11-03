@@ -18,3 +18,24 @@ class User(db.Model):
 
     def __repr__(self):
         return '<User %s %s %s>' % (self.email, self.password, self.salt)
+
+    def valid_password(self, password):
+        hash = sha1(password + self.salt).hexdigest()
+        if hash != self.password:
+            return False
+
+        return True
+
+    def is_authenticated(self):
+        return True
+
+
+    def is_active(self):
+        return True
+
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.id

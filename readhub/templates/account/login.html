@@ -1,11 +1,27 @@
 {% extends "layouts/basic.html" %}
 
+{% from "helpers/_formhelpers.html" import render_field %}
+
 {% block content %}
     <h3>Login</h3>
     <div class="row">
-        <div class="col-xs-3">
-            Login
+        <div class="col-lg-6">
+
+            <form class="form-horizontal form-login form-monolite" role="form" action="" method="post">
+                {{ form.hidden_tag() }}
+
+                {{ render_field(form.email, class_='form-control') }}
+                {{ render_field(form.password, class_='form-control') }}
+
+                <div class="form-group">
+                    <div class="col-sm-2"></div>
+                    <div class="col-sm-10">
+                        <input type="submit" class="btn btn-primary btn-lg btn-block" value="Login">
+                    </div>
+                </div>
+            </form>
         </div>
+        <div class="col-lg-6"></div>
     </div>
     <!-- /row -->
 {% endblock %}

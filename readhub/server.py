@@ -1,8 +1,16 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, session
 from readhub import app
 from readhub import db
-from forms import RegistrationForm
+from forms import RegistrationForm, LoginForm
 from models import User
+from flask.ext.login import LoginManager, login_user, logout_user
+
+login_manager = LoginManager()
+login_manager.init_app(app)
+
+@login_manager.user_loader
+def load_user(user_id):
+    return User.query.get(user_id)
 
 @app.route('/')
 def landing():
@@ -20,9 +28,29 @@ def landing():
 def book(id):
     return render_template('book.html', id=id)
 
-@app.route('/login/')
+@app.route('/login/', methods=['GET', 'POST'])
 def login():
-    return render_template('account/login.html')
+    form = LoginForm()
+
+    if form.validate_on_submit():
+        user = User.query.filter_by(email = form.email.data).first()
+        if user:
+            if user.valid_password(form.password.data):
+                flash('Welcome! %s' % user.email)
+                # session['user_id'] = user.id
+                login_user(user)
+                return redirect(url_for('landing'))
+            else:
+                flash('Fooo!')
+
+
+
+    return render_template('account/login.html', form=form)
+
+@app.route('/logout/')
+def logout():
+    logout_user()
+    return redirect(url_for('landing'))
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
