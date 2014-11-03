@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="2977758814">
+    <data-source source="LOCAL" name="PostgreSQL - readhub_db@localhost" uuid="f6aa8bdd-b046-4c8b-aaff-fa289c58ed58">
+      <driver-ref>postgresql</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.postgresql.Driver</jdbc-driver>
+      <jdbc-url>jdbc:postgresql://localhost:5432/readhub_db</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>

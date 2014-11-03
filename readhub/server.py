@@ -1,10 +1,8 @@
-from flask import render_template, flash, redirect
+from flask import render_template, flash, redirect, url_for
 from readhub import app
+from readhub import db
 from forms import RegistrationForm
-
-# If using db, do something like this:
-# from appname import db
-# from  models import Foo
+from models import User
 
 @app.route('/')
 def landing():
@@ -31,8 +29,13 @@ def register():
     form = RegistrationForm()
 
     if form.validate_on_submit():
-        flash('Account created!')
-        return redirect('/')
+        user = User(form.email.data, form.password.data)
+        db.session.add(user)
+        db.session.commit()
+        # todo check for error
+
+        flash('Account created! %s' % user.id)
+        return redirect(url_for('landing'))
 
     return render_template('account/register.html', form=form)
 
