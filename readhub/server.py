@@ -1,4 +1,4 @@
-from flask import render_template, flash, redirect, url_for, session
+from flask import render_template, flash, redirect, url_for
 from readhub import app
 from readhub import db
 from forms import RegistrationForm, LoginForm
