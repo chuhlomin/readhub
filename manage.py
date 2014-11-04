@@ -5,6 +5,7 @@ import os
 from readhub.models import *
 
 from readhub import app, db
+
 app.config.from_object(os.environ['SETTINGS'])
 
 migrate = Migrate(app, db)

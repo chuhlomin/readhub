@@ -8,13 +8,14 @@ from flask.ext.login import LoginManager, login_user, logout_user
 login_manager = LoginManager()
 login_manager.init_app(app)
 
+
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
 
+
 @app.route('/')
 def landing():
-
     books = [
         {'id': 1, 'title': 'Book 1'},
         {'id': 2, 'title': 'Book 2'},
@@ -24,16 +25,18 @@ def landing():
 
     return render_template('landing.html', books=books)
 
+
 @app.route('/book/<id>/')
 def book(id):
     return render_template('book.html', id=id)
+
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
     form = LoginForm()
 
     if form.validate_on_submit():
-        user = User.query.filter_by(email = form.email.data).first()
+        user = User.query.filter_by(email=form.email.data).first()
         if user:
             if user.valid_password(form.password.data):
                 flash('Welcome! %s' % user.email)
@@ -43,14 +46,14 @@ def login():
             else:
                 flash('Fooo!')
 
-
-
     return render_template('account/login.html', form=form)
+
 
 @app.route('/logout/')
 def logout():
     logout_user()
     return redirect(url_for('landing'))
+
 
 @app.route('/register/', methods=['GET', 'POST'])
 def register():
@@ -67,7 +70,8 @@ def register():
 
     return render_template('account/register.html', form=form)
 
-#  Some useful headers to set to beef up the robustness of the app
+
+# Some useful headers to set to beef up the robustness of the app
 # https://www.owasp.org/index.php/List_of_useful_HTTP_headers
 @app.after_request
 def after_request(response):

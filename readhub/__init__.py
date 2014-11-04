@@ -15,6 +15,7 @@ if not app.debug:
 app.logger.info("\nConfiguration\n%s\n" % app.config)
 
 from flask.ext.sqlalchemy import SQLAlchemy
+
 db = SQLAlchemy(app)
 
 # govuk_template asset path
