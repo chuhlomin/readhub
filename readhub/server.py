@@ -36,7 +36,7 @@ def book_add():
     return render_template('book/add.html', form=form)
 
 @app.route('/login/', methods=['GET', 'POST'])
-def login():
+def auth_login():
     form = LoginForm()
 
     if form.validate_on_submit():
@@ -54,13 +54,13 @@ def login():
 
 
 @app.route('/logout/')
-def logout():
+def auth_logout():
     logout_user()
     return redirect(url_for('landing'))
 
 
 @app.route('/register/', methods=['GET', 'POST'])
-def register():
+def auth_register():
     form = RegistrationForm()
 
     if form.validate_on_submit():
