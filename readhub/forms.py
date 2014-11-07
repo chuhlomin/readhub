@@ -11,3 +11,7 @@ class RegistrationForm(Form):
 class LoginForm(Form):
     email = StringField('E-mail', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+
+
+class BookAddForm(Form):
+    isbn = StringField('ISBN', validators=[DataRequired()])

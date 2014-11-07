@@ -22,7 +22,7 @@
             {% if current_user.is_authenticated() %}
                 <span class="">Hello, {{ current_user.email }}.</span>
                 <div class="btn-group">
-                    <a class="btn btn-primary disabled"><span class="fui-plus"></span> Add book</a>
+                    <a class="btn btn-primary" href="{{ url_for('book_add') }}"><span class="fui-plus"></span> Add book</a>
                     <a class="btn btn-default" href="{{ url_for('logout') }}">Logout</a>
                 </div>
             {% else %}

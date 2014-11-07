@@ -1,7 +1,7 @@
 from flask import render_template, flash, redirect, url_for
 from readhub import app
 from readhub import db
-from forms import RegistrationForm, LoginForm
+from forms import RegistrationForm, LoginForm, BookAddForm
 from models import User
 from flask.ext.login import LoginManager, login_user, logout_user
 
@@ -27,9 +27,13 @@ def landing():
 
 
 @app.route('/book/<id>/')
-def book(id):
-    return render_template('book.html', id=id)
+def book_view(id):
+    return render_template('book/view.html', id=id)
 
+@app.route('/book/add/', methods=['GET', 'POST'])
+def book_add():
+    form = BookAddForm()
+    return render_template('book/add.html', form=form)
 
 @app.route('/login/', methods=['GET', 'POST'])
 def login():
