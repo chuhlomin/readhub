@@ -4,7 +4,7 @@ module.exports = function(grunt) {
         cssmin: {
             combine: {
                 files: {
-                    'readhub/static/css/application.min.css': ['readhub/static/css/application.css']
+                    'readhub/static/css/main.min.css': ['readhub/static/css/main.css']
                 }
             }
         },
@@ -13,9 +13,9 @@ module.exports = function(grunt) {
                 src: [
                     'bower_components/flat-ui/dist/css/vendor/bootstrap.min.css',
                     'bower_components/flat-ui/dist/css/flat-ui.min.css',
-                    'readhub/static/css/application.min.css'
+                    'readhub/static/css/main.min.css'
                 ],
-                dest: 'readhub/static/css/main.css'
+                dest: 'readhub/static/css/application.css'
             }
         },
         copy: {
