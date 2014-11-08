@@ -11,3 +11,4 @@ PyYAML==3.11
 gunicorn==18.0
 pg8000==1.10.1
 passlib==1.6.1
+eventlet==0.15.2
