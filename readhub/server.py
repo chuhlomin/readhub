@@ -3,7 +3,7 @@ from readhub import app
 from readhub import db
 from forms import RegistrationForm, LoginForm, BookAddForm
 from models import User
-from flask.ext.login import LoginManager, login_user, logout_user
+from flask.ext.login import LoginManager, login_user, logout_user, login_required
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -31,6 +31,7 @@ def book_view(id):
     return render_template('book/view.html', id=id)
 
 @app.route('/book/add/', methods=['GET', 'POST'])
+@login_required
 def book_add():
     form = BookAddForm()
     return render_template('book/add.html', form=form)
