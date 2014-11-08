@@ -1,1 +1,1 @@
-web: gunicorn -b 0.0.0.0:$PORT -k eventlet readhub.herokuapp.com:readhub
+web: gunicorn -b 0.0.0.0:$PORT -k eventlet application.server:app
