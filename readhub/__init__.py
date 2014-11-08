@@ -1,7 +1,8 @@
 import os, logging
 from flask import Flask
 
-app = Flask(__name__)
+
+app = Flask(__name__, static_url_path='/static')
 app.config.from_object(os.environ.get('SETTINGS'))
 
 if not app.debug:
