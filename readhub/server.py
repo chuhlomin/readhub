@@ -1,9 +1,10 @@
-from flask import render_template, flash, redirect, url_for
+from flask import render_template, flash, redirect, url_for, send_from_directory
 from readhub import app
 from readhub import db
 from forms import RegistrationForm, LoginForm, BookAddForm
 from models import User
 from flask.ext.login import LoginManager, login_user, logout_user, login_required
+import os
 
 login_manager = LoginManager()
 login_manager.init_app(app)
@@ -12,6 +13,21 @@ login_manager.init_app(app)
 @login_manager.user_loader
 def load_user(user_id):
     return User.query.get(user_id)
+
+
+@app.route('/static/css/<path:path>')
+def static_files_css(path):
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'css/' + path)
+
+
+@app.route('/static/fonts/<path:path>')
+def static_files_fonts(path):
+    return send_from_directory(os.path.join(app.root_path, 'static'), 'fonts/' + path)
+
+
+@app.errorhandler(404)
+def page_not_found():
+    return render_template('404.html'), 404
 
 
 @app.route('/')
@@ -30,11 +46,13 @@ def landing():
 def book_view(id):
     return render_template('book/view.html', id=id)
 
+
 @app.route('/book/add/', methods=['GET', 'POST'])
 @login_required
 def book_add():
     form = BookAddForm()
     return render_template('book/add.html', form=form)
+
 
 @app.route('/login/', methods=['GET', 'POST'])
 def auth_login():
