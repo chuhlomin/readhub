@@ -1,22 +1,31 @@
 module.exports = function(grunt) {
 
     grunt.initConfig({
+        cssmin: {
+            combine: {
+                files: {
+                    'readhub/static/css/application.min.css': ['readhub/static/css/application.css']
+                }
+            }
+        },
+        concat: {
+            basic: {
+                src: [
+                    'bower_components/flat-ui/dist/css/vendor/bootstrap.min.css',
+                    'bower_components/flat-ui/dist/css/flat-ui.min.css',
+                    'readhub/static/css/application.min.css'
+                ],
+                dest: 'readhub/static/css/main.css'
+            }
+        },
         copy: {
             main: {
                 files: [
                     {
-                        src: 'bower_components/flat-ui/dist/css/flat-ui.min.css',
-                        dest: 'static/css/flat-ui.min.css'
-                    },
-                    {
-                        src: 'bower_components/flat-ui/dist/css/vendor/bootstrap.min.css',
-                        dest: 'static/css/vendor/bootstrap.min.css'
-                    },
-                    {
                         expand: true,
                         cwd: 'bower_components/flat-ui/fonts/',
                         src: ['**'],
-                        dest: 'static/fonts/'
+                        dest: 'readhub/static/fonts/'
                     }
                 ]
             }
@@ -27,5 +36,5 @@ module.exports = function(grunt) {
     grunt.loadNpmTasks('grunt-contrib-cssmin');
     grunt.loadNpmTasks('grunt-contrib-copy');
 
-    grunt.registerTask('default', ['copy']);
+    grunt.registerTask('default', ['cssmin', 'concat', 'copy']);
 };
