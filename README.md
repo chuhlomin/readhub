@@ -15,7 +15,7 @@ Prerequisites
 Setup database
 --------------
 
-    CREATE ROLE readhub_user WITH LOGIN CREATEDB;
+    CREATE ROLE readhub_user WITH LOGIN;
     CREATE DATABASE readhub_db;
     GRANT ALL PRIVILEGES ON DATABASE readhub_db to readhub_user;
 
